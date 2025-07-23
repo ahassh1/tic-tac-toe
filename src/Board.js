@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Board = () => {
+const Board = ({ board }) => {
   return (
     <View style={styles.board}>
       {board.map((row, rowIndex) => (
@@ -9,7 +9,7 @@ const Board = () => {
             <TouchableOpacity
               key={cellIndex}
               style={styles.cell}
-              onPress={() => onPress(rowIndex, cellIndex)}
+              onPress={() => (rowIndex, cellIndex)}
             >
               <Text style={styles.cellText}>{cell}</Text>
             </TouchableOpacity>

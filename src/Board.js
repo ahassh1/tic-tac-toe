@@ -66,6 +66,13 @@ const checkWinner = () => {
   }
 };
 
+//reset board
+const resetBoard = () => {
+  setBoard(initialBoard);
+  setPlayer("x");
+  setWinner("");
+};
+
 const Board = () => {
   return (
     <View style={styles.board}>

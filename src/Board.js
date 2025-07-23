@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const board = [
   ["", "", ""],
@@ -73,6 +73,22 @@ const resetBoard = () => {
   setWinner("");
 };
 
+useEffect(() => {
+  if (winner) {
+    Alert.alert(`player ${winner} won!!`, " ", [
+      { text: "OK", onPress: resetBoard },
+    ]);
+  }
+}, [winner]);
+
+useEffect(() => {
+  if (!winner) {
+    const isBoardFull = board.every((row) => row.every((cell) => cell !== ""));
+    if (isBoardFull) {
+      Alert.alert("it is tie!!", " ", [{ text: "OK", onPress: resetBoard }]);
+    }
+  }
+}, [board]);
 const Board = () => {
   return (
     <View style={styles.board}>

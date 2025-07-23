@@ -24,6 +24,20 @@ const handlePress = (rowIndex, cellIndex) => {
   }
 };
 
+const checkWinner = () => {
+  //check row
+  for (let i = 0; i < 3; i++) {
+    if (
+      board[i][0] !== "" &&
+      board[i][0] === board[i][1] &&
+      board[i][0] === board[i][2]
+    ) {
+      setWinner(board[i][0]);
+      break;
+    }
+  }
+};
+
 const Board = () => {
   return (
     <View style={styles.board}>
